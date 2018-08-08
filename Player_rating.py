@@ -95,8 +95,8 @@ X.columns, X.shape
 Y = df["overall_rating"]
 Y.shape
 
-print("\nSpliting test and train sets")
-x_train, x_test, y_train, y_test = train_test_split(X,Y,test_size=0.75, random_state = 100)
+print("\nSpliting test and train sets 25%")
+x_train, x_test, y_train, y_test = train_test_split(X,Y,test_size=0.25, random_state = 100)
 import math
 print("\n Creating a model and checking model Score \n")
 lm  = LinearRegression()
@@ -136,7 +136,7 @@ imp_cols = importance[importance.importance >= 0.005].cols.values
 imp_cols
 
 print("\nFitting models with columns where feature importance>=0.005\n")
-x_train, x_test, y_train, y_test = train_test_split(X[imp_cols],Y,test_size=0.75, random_state = 100)
+x_train, x_test, y_train, y_test = train_test_split(X[imp_cols],Y,test_size=0.25, random_state = 100)
 for reg in regressors:
     reg[1].fit(x_train, y_train)
     y_test_pred= reg[1].predict(x_test)
@@ -146,7 +146,7 @@ for reg in regressors:
 imp_cols = importance[importance.importance >= 0.001].cols.values
 imp_cols
 print("\nFitting models with columns where feature importance>=0.001\n")
-x_train, x_test, y_train, y_test = train_test_split(X[imp_cols],Y,test_size=0.75, random_state = 100)
+x_train, x_test, y_train, y_test = train_test_split(X[imp_cols],Y,test_size=0.25, random_state = 100)
 for reg in regressors:
     reg[1].fit(x_train, y_train)
     y_test_pred= reg[1].predict(x_test)
